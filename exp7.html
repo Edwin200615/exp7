@@ -1,0 +1,665 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tech Product Showcase</title>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<style>
+
+/* GENERAL STYLING */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f2f5fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(135deg, #0d47a1, #2196f3);
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+header h1 {
+    font-size: 35px;
+}
+
+header p {
+    font-size: 18px;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: #102a43;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #64ffda;
+}
+
+/* SECTIONS */
+
+section {
+    background: white;
+    margin: 25px auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 1100px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #1565c0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #0d47a1;
+    margin-bottom: 10px;
+}
+
+/* INPUT FIELDS */
+
+input {
+    padding: 10px;
+    margin: 8px;
+    width: 150px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+/* BUTTONS */
+
+button {
+    background: #1565c0;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #0d47a1;
+}
+
+/* BUDGET BOXES */
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.box {
+    display: none;
+    background: #e3f2fd;
+    color: #0d47a1;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1 1 180px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* PRODUCT CARDS */
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: #eaf3ff;
+    padding: 20px;
+    width: 210px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.card input {
+    width: 70px;
+}
+
+/* BILL */
+
+#bill {
+    display: none;
+    background: #e8f5e9;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* PRODUCT CUSTOMIZATION */
+
+#car {
+    width: 300px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #e3f2fd;
+    border-radius: 15px;
+    transition: 0.5s;
+    text-align: center;
+}
+
+.part {
+    background: #1565c0;
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+#glass {
+    background: skyblue;
+    color: #123;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.tyre {
+    display: inline-block;
+    background: #222;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 10px;
+    transition: 0.5s;
+}
+
+.dark {
+    background: #111 !important;
+    color: white !important;
+}
+
+.big {
+    transform: scale(1.2);
+}
+
+.bigTyre {
+    width: 50px;
+    height: 50px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #102a43;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media(max-width:768px) {
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    section {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .products {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #car {
+        max-width: 90%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <h1>TECH PRODUCT SHOWCASE</h1>
+    <p>Explore, Customize and Purchase Latest Technology Products</p>
+</header>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#budget">Budget Calculator</a>
+    <a href="#order">Product Order</a>
+    <a href="#customize">Customization</a>
+</nav>
+
+<!-- HOME SECTION -->
+
+<section id="home">
+
+    <h2>Welcome to Tech Product Showcase</h2>
+
+    <p style="text-align:center;">
+        Discover the latest Smartphones, Laptops, Smartwatches,
+        Headphones and other modern technology gadgets.
+    </p>
+
+</section>
+
+<!-- 1. TECH BUDGET CALCULATOR -->
+
+<section id="budget">
+
+    <h2>1. Technology Budget Calculator</h2>
+
+    <h3>Enter Your Total Budget</h3>
+
+    <input type="number" id="amt"
+    placeholder="Enter Budget">
+
+    <h3>Divide Your Budget (%)</h3>
+
+    <p>Smartphones</p>
+    <input type="number" id="phone" value="30">
+
+    <p>Laptops</p>
+    <input type="number" id="laptop" value="40">
+
+    <p>Accessories</p>
+    <input type="number" id="accessories" value="20">
+
+    <p>Savings</p>
+    <input type="number" id="saving" value="10">
+
+    <br>
+
+    <button id="btn">Calculate Budget</button>
+
+    <div id="results">
+
+        <div class="box" id="b1"></div>
+
+        <div class="box" id="b2"></div>
+
+        <div class="box" id="b3"></div>
+
+        <div class="box" id="b4"></div>
+
+    </div>
+
+</section>
+
+<!-- 2. TECH PRODUCT ORDER -->
+
+<section id="order">
+
+    <h2>2. Tech Product Order</h2>
+
+    <div class="products">
+
+        <div class="card">
+
+            <img src="https://placehold.co/100x100?text=Phone"
+            alt="Smartphone">
+
+            <h3>Smartphone</h3>
+
+            <p>Price: ₹25000</p>
+
+            <input type="number" id="c1" value="0" min="0">
+
+        </div>
+
+        <div class="card">
+
+            <img src="https://placehold.co/100x100?text=Laptop"
+            alt="Laptop">
+
+            <h3>Laptop</h3>
+
+            <p>Price: ₹60000</p>
+
+            <input type="number" id="c2" value="0" min="0">
+
+        </div>
+
+        <div class="card">
+
+            <img src="https://placehold.co/100x100?text=Watch"
+            alt="Smartwatch">
+
+            <h3>Smartwatch</h3>
+
+            <p>Price: ₹5000</p>
+
+            <input type="number" id="c3" value="0" min="0">
+
+        </div>
+
+        <div class="card">
+
+            <img src="https://placehold.co/100x100?text=Earbuds"
+            alt="Wireless Earbuds">
+
+            <h3>Wireless Earbuds</h3>
+
+            <p>Price: ₹3000</p>
+
+            <input type="number" id="c4" value="0" min="0">
+
+        </div>
+
+    </div>
+
+    <center>
+
+        <button id="orderBtn">Place Order</button>
+
+    </center>
+
+    <div id="bill">
+
+        <h3>Purchase Order Bill</h3>
+
+        <p id="total"></p>
+
+    </div>
+
+</section>
+
+<!-- 3. PRODUCT CUSTOMIZATION -->
+
+<section id="customize">
+
+    <h2>3. Product Customization</h2>
+
+    <h3 style="text-align:center;">
+        Customize Your Smartphone
+    </h3>
+
+    <div id="car">
+
+        <div class="part">
+
+            <h3 style="color:white;">TECH DEVICE</h3>
+
+            <div id="glass">
+                SMARTPHONE SCREEN
+            </div>
+
+            <p>Premium Technology Device</p>
+
+        </div>
+
+        <div>
+
+            <span class="tyre"></span>
+
+            <span class="tyre"></span>
+
+        </div>
+
+    </div>
+
+    <center>
+
+        <button id="color">Change Product Color</button>
+
+        <button id="tint">Change Screen Tint</button>
+
+        <button id="size">Change Product Size</button>
+
+        <button id="tyre">Change Accessory Size</button>
+
+        <button id="reset">Reset</button>
+
+    </center>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p><b>Done By:</b> EDWIN A</p>
+
+    <p><b>Register Number:</b> URK24CS1201</p>
+
+    <p><b>Exercise No:</b> 7</p>
+
+    <p>Tech Product Showcase</p>
+
+    <p>&copy; 2026 Tech Product Showcase. All Rights Reserved.</p>
+
+</footer>
+
+
+<!-- JQUERY PROGRAMS -->
+
+<script>
+
+$(document).ready(function() {
+
+
+    // 1. TECHNOLOGY BUDGET CALCULATOR
+
+    $("#btn").click(function() {
+
+        let amt = Number($("#amt").val());
+
+        let p = Number($("#phone").val());
+
+        let l = Number($("#laptop").val());
+
+        let a = Number($("#accessories").val());
+
+        let s = Number($("#saving").val());
+
+
+        if (amt <= 0) {
+
+            alert("Please enter a valid budget amount!");
+
+        }
+
+        else if (p < 0 || l < 0 || a < 0 || s < 0) {
+
+            alert("Percentages cannot be negative!");
+
+        }
+
+        else if (p + l + a + s != 100) {
+
+            alert("Total percentage must be 100%!");
+
+        }
+
+        else {
+
+            $("#b1").html(
+                "Smartphone<br>₹" + (amt * p / 100)
+            );
+
+            $("#b2").html(
+                "Laptop<br>₹" + (amt * l / 100)
+            );
+
+            $("#b3").html(
+                "Accessories<br>₹" + (amt * a / 100)
+            );
+
+            $("#b4").html(
+                "Savings<br>₹" + (amt * s / 100)
+            );
+
+            $(".box").show();
+
+        }
+
+    });
+
+
+    // 2. TECH PRODUCT ORDER
+
+    $("#orderBtn").click(function() {
+
+        let q1 = Number($("#c1").val());
+
+        let q2 = Number($("#c2").val());
+
+        let q3 = Number($("#c3").val());
+
+        let q4 = Number($("#c4").val());
+
+
+        if (q1 < 0 || q2 < 0 || q3 < 0 || q4 < 0) {
+
+            alert("Quantity cannot be negative!");
+
+            return;
+
+        }
+
+
+        let total =
+            q1 * 25000 +
+            q2 * 60000 +
+            q3 * 5000 +
+            q4 * 3000;
+
+
+        if (total == 0) {
+
+            alert("Please select at least one product!");
+
+        }
+
+        else {
+
+            $("#total").text("Total Amount: ₹" + total);
+
+            $("#bill").show();
+
+        }
+
+    });
+
+
+    // 3. PRODUCT CUSTOMIZATION
+
+    let colors = ["red", "green", "blue", "orange"];
+
+    let i = 0;
+
+
+    // Change Product Color
+
+    $("#color").click(function() {
+
+        i = (i + 1) % colors.length;
+
+        $(".part").css("background", colors[i]);
+
+    });
+
+
+    // Change Screen Tint
+
+    $("#tint").click(function() {
+
+        $("#glass").toggleClass("dark");
+
+    });
+
+
+    // Change Product Size
+
+    $("#size").click(function() {
+
+        $("#car").toggleClass("big");
+
+    });
+
+
+    // Change Accessory Size
+
+    $("#tyre").click(function() {
+
+        $(".tyre").toggleClass("bigTyre");
+
+    });
+
+
+    // Reset Customization
+
+    $("#reset").click(function() {
+
+        i = 0;
+
+        $(".part").css("background", "#1565c0");
+
+        $("#glass").removeClass("dark");
+
+        $("#car").removeClass("big");
+
+        $(".tyre").removeClass("bigTyre");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
+```
